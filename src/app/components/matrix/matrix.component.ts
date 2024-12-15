@@ -16,7 +16,7 @@ export class MatrixComponent {
     destroyed = false;
     sceneWrap!: HTMLElement;
     scene!: HTMLElement;
-    mousedownHandler!: (mdevt: MouseEvent) => void;
+    mouseenterHandler!: (mdevt: MouseEvent) => void;
 
     ngAfterViewInit() {
         this.sceneWrap = document.querySelector("#scene-wrap_" + this.uid) as HTMLElement;
@@ -25,12 +25,12 @@ export class MatrixComponent {
         this.getRandomRotation();
         this.rotate();
 
-        this.mousedownHandler = (mdevt: MouseEvent) => {
+        this.mouseenterHandler = (mdevt: MouseEvent) => {
             let prevMouseX = mdevt.pageX;
             let prevMouseY = mdevt.pageY;
             const mouseMoveHandler = (mmevt: MouseEvent) => {
-                this.ry += (mmevt.pageX - prevMouseX) * 0.3;
-                this.rx += (prevMouseY - mmevt.pageY) * 0.3;
+                this.ry += mmevt.pageX - prevMouseX;
+                this.rx += prevMouseY - mmevt.pageY;
                 this.rx %= 360;
                 this.ry %= 360;
                 this.rotate();
@@ -38,16 +38,16 @@ export class MatrixComponent {
                 prevMouseY = mmevt.pageY;
             }
             document.addEventListener("mousemove", mouseMoveHandler);
-            document.addEventListener("mouseup", () =>
+            this.sceneWrap.addEventListener("mouseleave", () =>
                 document.removeEventListener("mousemove", mouseMoveHandler)
             );
         };
-        this.sceneWrap.addEventListener("mousedown", this.mousedownHandler);
+        this.sceneWrap.addEventListener("mouseenter", this.mouseenterHandler);
     }
 
     ngOnDestroy() {
         this.destroyed = true;
-        this.sceneWrap.removeEventListener("mousedown", this.mousedownHandler);
+        this.sceneWrap.removeEventListener("mouseenter", this.mouseenterHandler);
     }
 
     rotate = () => {

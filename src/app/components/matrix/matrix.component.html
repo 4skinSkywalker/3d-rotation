@@ -1,0 +1,7 @@
+<div class="scene-wrap" [id]="'scene-wrap_' + uid">
+    <div class="scene" [id]="'scene_' + uid" [style.width]="size + 'rem'" [style.height]="size + 'rem'">
+        @for (pt of pts; track $index) {
+            <app-cube bg="#fff" [size]="1" [pos]="pt"></app-cube>
+        }
+    </div>
+</div>

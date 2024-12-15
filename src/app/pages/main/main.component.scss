@@ -1,0 +1,17 @@
+:host {
+    display: grid;
+    padding: 1rem;
+}
+
+.reference {
+    text-align: center;
+    margin-bottom: 1rem;
+    height: 15rem;
+}
+
+.choices {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 15rem;
+}

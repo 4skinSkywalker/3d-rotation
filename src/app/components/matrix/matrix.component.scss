@@ -1,0 +1,17 @@
+:host {
+    display: grid;
+    height: 100%;
+}
+
+.scene-wrap {
+    display: grid;
+    perspective: 10rem;
+    place-items: center;
+    box-shadow: inset 0 0 0 1px #fff;
+    border-radius: 1rem;
+}
+
+.scene {
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+}

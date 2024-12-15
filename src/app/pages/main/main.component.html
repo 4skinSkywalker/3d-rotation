@@ -1,0 +1,11 @@
+<div class="reference">
+    <app-matrix [size]="sizeOfMatrices" [pts]="arraysOfPts[0]"></app-matrix>
+</div>
+
+<div class="choices">
+    @for (pts of arraysOfPts; track $index) {
+        @if ($index > 0) {
+            <app-matrix [size]="sizeOfMatrices" [pts]="pts"></app-matrix>
+        }
+    }
+</div>

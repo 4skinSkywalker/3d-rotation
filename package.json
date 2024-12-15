@@ -7,7 +7,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "gh-pages": "ng build --output-path docs --base-href /3d-rotation/"
   },
   "private": true,
   "dependencies": {

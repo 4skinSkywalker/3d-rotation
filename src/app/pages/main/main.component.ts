@@ -14,6 +14,12 @@ export class MainComponent {
     arraysOfPts: string[][] = [];
 
     ngOnInit() {
+        this.init();
+    }
+
+    init() {
+        this.arraysOfPts = [];
+
         const original = this.createPath(this.sizeOfMatrices**2);
         this.arraysOfPts.push(original);
         for (let i = 1; i < this.numOfMatrices; i++) {
@@ -27,6 +33,7 @@ export class MainComponent {
             }
             this.arraysOfPts.push(newPts || fallbackPts!);
         }
+
         const rndIdx = 1+Math.floor(Math.random()*(this.numOfMatrices-1));
         this.arraysOfPts[rndIdx] = original;
     }
@@ -86,5 +93,15 @@ export class MainComponent {
         }
 
         return path;
+    }
+
+    checkAnswer(original: string[], choosen: string[]) {
+        const isCorrect = stringifyPath(original) === stringifyPath(choosen);
+        if (isCorrect) {
+            alert("Well done! Your answer is correct!");
+            this.init();
+        } else {
+            alert("Sorry, your answer is not correct.");
+        }
     }
 }

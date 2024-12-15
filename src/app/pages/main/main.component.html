@@ -5,7 +5,7 @@
 <div class="choices">
     @for (pts of arraysOfPts; track $index) {
         @if ($index > 0) {
-            <app-matrix [size]="sizeOfMatrices" [pts]="pts"></app-matrix>
+            <app-matrix (click)="checkAnswer(arraysOfPts[0], pts)" [size]="sizeOfMatrices" [pts]="pts"></app-matrix>
         }
     }
 </div>

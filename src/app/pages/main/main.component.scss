@@ -1,6 +1,8 @@
 :host {
     display: grid;
     padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .reference {
@@ -13,5 +15,11 @@
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 15rem;
+    grid-auto-rows: 15rem;
+}
+
+@media (max-width: 768px) {
+    .choices {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

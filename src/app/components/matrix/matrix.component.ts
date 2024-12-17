@@ -38,16 +38,16 @@ export class MatrixComponent {
                 prevMouseY = mmevt.pageY;
             }
             document.addEventListener("mousemove", mouseMoveHandler);
-            this.sceneWrap.addEventListener("mouseleave", () =>
+            document.addEventListener("mouseup", () =>
                 document.removeEventListener("mousemove", mouseMoveHandler)
             );
         };
-        this.sceneWrap.addEventListener("mouseenter", this.mouseenterHandler);
+        this.sceneWrap.addEventListener("mousedown", this.mouseenterHandler);
     }
 
     ngOnDestroy() {
         this.destroyed = true;
-        this.sceneWrap.removeEventListener("mouseenter", this.mouseenterHandler);
+        this.sceneWrap.removeEventListener("mousedown", this.mouseenterHandler);
     }
 
     rotate = () => {
@@ -55,7 +55,7 @@ export class MatrixComponent {
     }
 
     getRandomRotation = () => {
-        this.rx = Math.floor(Math.random()*135);
-        this.ry = Math.floor(Math.random()*135);
+        this.rx = Math.floor(Math.random()*180);
+        this.ry = Math.floor(Math.random()*180);
     }
 }

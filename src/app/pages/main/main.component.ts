@@ -12,6 +12,7 @@ export class MainComponent {
     numOfMatrices = 5;
     sizeOfMatrices = 5;
     arraysOfPts: string[][] = [];
+    zoom = 1;
 
     ngOnInit() {
         this.init();
